@@ -1,0 +1,18 @@
+<div class="button-row">
+  <a mat-button>Home</a>
+  <span>>></span>
+  <a mat-button>{{route()}}</a>
+  @if(route() === 'Shop') {
+    @if (this.pieService.selectedCategory(); as selectedCategory) {
+      <span>>></span>
+      <a mat-button>{{ selectedCategory }}</a>
+    }
+    @if (this.pieService.selectedPieId();) {
+      @let selectedPie = this.pieService.selectedPie.value();
+      @if(selectedPie){
+        <span>>></span>
+        <a mat-button>{{ selectedPie.title }}</a>
+      }
+    }
+  }
+</div>
