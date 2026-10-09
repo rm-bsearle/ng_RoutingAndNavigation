@@ -1,0 +1,56 @@
+<div class="button-row">
+  <a
+    [routerLink]="['/', HOME_ROUTE]"
+    routerLinkActive
+    ariaCurrentWhenActive="page"
+    mat-button
+    >Home</a
+  >
+  <span>>></span>
+  <!-- We declare selectedCategory so that is can be used in multiple locations -->
+  @let selectedCategory = this.pieService.selectedCategory();
+  @if(route() === 'Shop') {
+  <!-- The shop link needs the categoryId path segment -->
+  <a
+    [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory]"
+    routerLinkActive
+    ariaCurrentWhenActive="page"
+    mat-button
+    >{{ route() }}</a
+  >
+  @if (selectedCategory) {
+  <span>>></span>
+  <!-- The category link needs the categoryId path segment -->
+  <a
+    [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory]"
+    routerLinkActive
+    ariaCurrentWhenActive="page"
+    mat-button
+    >{{ selectedCategory }}</a
+  >
+  } @if (this.pieService.selectedPieId();) {
+     @let selectedPie = this.pieService.selectedPie.value();
+     @if(selectedPie){
+      <span>>></span>
+      <!-- Update the routerLink to use the selected pie id to set the query param -->
+      <!-- We don't expect the link to be styled but we want the aria current property-->
+      <a
+        [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory, DETAIL_ROUTE]"
+        [queryParams]="{ pieId: this.pieService.selectedPieId() }"
+        queryParamsHandling="replace"
+        routerLinkActive
+        ariaCurrentWhenActive="page"
+        mat-button
+        >{{ selectedPie.title }}</a
+      >
+      }
+    } } @else() {
+  <a
+    [routerLink]="['/', route().toLowerCase()]"
+    routerLinkActive
+    ariaCurrentWhenActive="page"
+    mat-button
+    >{{ route() }}</a
+  >
+  }
+</div>
