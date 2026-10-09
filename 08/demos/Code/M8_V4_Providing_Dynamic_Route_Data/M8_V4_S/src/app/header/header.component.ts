@@ -1,0 +1,43 @@
+import { Component, inject } from '@angular/core';
+import { Category } from '../models/pie';
+import { PieService } from '../services/pie.service';
+import { MatMenuItem, MatMenuTrigger, MatMenu } from '@angular/material/menu';
+import { MatButton } from '@angular/material/button';
+import { CartService } from '../services/cart.service';
+import { AuthService } from '../services/auth.service';
+import {
+  ABOUT_ROUTE,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  PRODUCTS_ROUTE,
+  DETAIL_ROUTE,
+  CONTACT_ROUTE,
+  CART_ROUTE,
+  PIZZA_ROUTE,
+  ADMIN_ROUTE,
+} from '../app.routes';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FeatureFlagService } from '../services/feature-flag.service';
+
+@Component({
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    imports: [MatMenuItem, MatButton, MatMenuTrigger, MatMenu, RouterLink, RouterLinkActive]
+})
+export class HeaderComponent {
+  protected readonly pieService = inject(PieService);
+  protected readonly authService = inject(AuthService);
+  protected readonly flagService = inject(FeatureFlagService);
+  protected cartService = inject(CartService);
+
+  protected readonly PRODUCTS_ROUTE = PRODUCTS_ROUTE;
+  protected readonly HOME_ROUTE = HOME_ROUTE;
+  protected readonly LOGIN_ROUTE = LOGIN_ROUTE;
+  protected readonly ABOUT_ROUTE = ABOUT_ROUTE;
+  protected readonly DETAIL_ROUTE = DETAIL_ROUTE;
+  protected readonly CONTACT_ROUTE = CONTACT_ROUTE;
+  protected readonly CART_ROUTE = CART_ROUTE;
+  protected readonly PIZZA_ROUTE = PIZZA_ROUTE;
+  protected readonly ADMIN_ROUTE = ADMIN_ROUTE;
+}
