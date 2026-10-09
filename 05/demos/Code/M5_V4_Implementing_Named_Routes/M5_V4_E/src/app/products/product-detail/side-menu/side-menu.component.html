@@ -1,0 +1,31 @@
+@let pies = this.pieService.pies.value();
+@let error = this.pieService.pies.error();
+
+@if(pies){
+  <div class="side-nav">
+    @for (pie of pies; track pie.id) {
+      <!-- Update the button to an anchor tag and use routerLinkActive to set the style -->
+      <!-- We don't need to navigate so we pass an empty array to routerLink -->
+      <!-- Use the queryParams input to add the query param to the URL -->
+      <a
+        class="image-button"
+        [routerLink]="[]"
+        [queryParams]="{ pieId: pie.id }"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >
+        <img
+          [src]="pie.thumb"
+          alt="image of person sticking a fork in a piece of pie"
+          />
+    </a>
+    } @empty {
+      <p>Oops! No pies.</p>
+    }
+  </div>
+} @else if(error){
+  <div class="error-message">
+    <p>There was an error loading the pies.</p>
+  </div>
+}
+
