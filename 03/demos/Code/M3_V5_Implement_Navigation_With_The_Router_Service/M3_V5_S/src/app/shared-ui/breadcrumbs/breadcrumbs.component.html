@@ -1,18 +1,20 @@
 <div class="button-row">
-  <a mat-button>Home</a>
+  <a [routerLink]="['/', HOME_ROUTE]" routerLinkActive ariaCurrentWhenActive="page" mat-button>Home</a>
   <span>>></span>
-  <a mat-button>{{route()}}</a>
   @if(route() === 'Shop') {
+    <a [routerLink]="['/', PRODUCTS_ROUTE]" routerLinkActive ariaCurrentWhenActive="page" mat-button>{{route()}}</a>
     @if (this.pieService.selectedCategory(); as selectedCategory) {
       <span>>></span>
-      <a mat-button>{{ selectedCategory }}</a>
+      <a [routerLink]="['/', PRODUCTS_ROUTE]" routerLinkActive ariaCurrentWhenActive="page" mat-button>{{ selectedCategory }}</a>
     }
     @if (this.pieService.selectedPieId();) {
       @let selectedPie = this.pieService.selectedPie.value();
       @if(selectedPie){
         <span>>></span>
-        <a mat-button>{{ selectedPie.title }}</a>
+        <a [routerLink]="['/', PRODUCTS_ROUTE, DETAIL_ROUTE]" routerLinkActive ariaCurrentWhenActive="page" mat-button>{{ selectedPie.title }}</a>
       }
     }
+  } @else {
+    <a [routerLink]="['/', route().toLowerCase()]" routerLinkActive ariaCurrentWhenActive="page" mat-button>{{route()}}</a>
   }
 </div>
