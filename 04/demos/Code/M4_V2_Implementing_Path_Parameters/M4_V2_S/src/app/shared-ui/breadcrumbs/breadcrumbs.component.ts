@@ -18,4 +18,8 @@ export class BreadcrumbsComponent {
     protected readonly PRODUCTS_ROUTE = PRODUCTS_ROUTE;
     protected readonly HOME_ROUTE = HOME_ROUTE;
     protected readonly DETAIL_ROUTE = DETAIL_ROUTE;
+
+  clearSelectedPie() {
+    this.pieService.clearSelectedPie();
+  }
 }

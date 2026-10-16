@@ -10,30 +10,35 @@
     >Home</a
   >
   <span>>></span>
+  @let selectedCategory = this.pieService.selectedCategory();
   @if(route() === 'Shop') {
   <!-- Shop is a weird link that isn't a route so we needed to provide an else block and move this element in here -->
   <a
-    [routerLink]="['/', PRODUCTS_ROUTE]"
+    [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory]"
     routerLinkActive
     ariaCurrentWhenActive="page"
     mat-button
+    (click)="clearSelectedPie()"
     >{{ route() }}</a
   >
-  @if (this.pieService.selectedCategory(); as selectedCategory) {
+  @if (selectedCategory) {
   <span>>></span>
   <a
-    [routerLink]="['/', PRODUCTS_ROUTE]"
+    [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory]"
     routerLinkActive
     ariaCurrentWhenActive="page"
     mat-button
+    (click)="clearSelectedPie()"
     >{{ selectedCategory }}</a
   >
-  } @if (this.pieService.selectedPieId();) { @let selectedPie =
-  this.pieService.selectedPie.value(); @if(selectedPie){
+  } @if (this.pieService.selectedPieId();) {
+    @let selectedPie = this.pieService.selectedPie.value();
+  @if(selectedPie){
   <span>>></span>
+
   <!-- Since we are using absolute routes we have to reproduce the full path -->
   <a
-    [routerLink]="['/', PRODUCTS_ROUTE, DETAIL_ROUTE]"
+    [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory, DETAIL_ROUTE]"
     routerLinkActive
     ariaCurrentWhenActive="page"
     mat-button
