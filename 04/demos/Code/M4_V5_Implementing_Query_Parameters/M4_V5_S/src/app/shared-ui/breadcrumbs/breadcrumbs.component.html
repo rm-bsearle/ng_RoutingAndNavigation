@@ -38,6 +38,8 @@
   <!-- Don't worry that the selected pie is not getting cleared, we will fix that in M2_V4-->
   <a
     [routerLink]="['/', PRODUCTS_ROUTE, selectedCategory, DETAIL_ROUTE]"
+    [queryParams]="{pieId: this.pieService.selectedPieId()}"
+    queryParamsHandling="replace"
     routerLinkActive
     ariaCurrentWhenActive="page"
     mat-button

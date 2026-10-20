@@ -6,7 +6,11 @@
     @for (pie of pies; track pie.id) {
       <button
         class="image-button"
-        (click)="selectPie(pie.id)"
+        [routerLink]="[]"
+        [queryParams]="{pieId: pie.id}"
+        queryParamsHandling="replace"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
         >
         <img
           [src]="pie.thumb"
