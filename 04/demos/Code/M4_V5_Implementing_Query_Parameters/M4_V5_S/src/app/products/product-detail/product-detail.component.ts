@@ -13,6 +13,7 @@ import { Category } from '../../models/pie';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailComponent {
+
   // inject the PieService to use it in the effect
   private readonly pieService = inject(PieService);
 

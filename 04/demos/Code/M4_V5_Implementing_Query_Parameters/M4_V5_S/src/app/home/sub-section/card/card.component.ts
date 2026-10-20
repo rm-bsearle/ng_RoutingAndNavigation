@@ -19,7 +19,9 @@ export class CardComponent {
   private readonly router = inject(Router);
 
   selectPie(pieId: string) {
-    this.pieService.setSelectedPie(pieId);
-    this.router.navigate([PRODUCTS_ROUTE, 'All Pies', DETAIL_ROUTE])
+    this.router.navigate([PRODUCTS_ROUTE, 'All Pies', DETAIL_ROUTE], {
+      queryParams: { pieId: pieId },
+      queryParamsHandling: 'replace',
+    });
   }
 }

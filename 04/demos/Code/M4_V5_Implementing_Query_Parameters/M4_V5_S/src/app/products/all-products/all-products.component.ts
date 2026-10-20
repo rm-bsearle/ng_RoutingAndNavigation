@@ -18,9 +18,6 @@ export class AllProductsComponent {
   categoryId = input<Category>('All Pies')
   protected readonly DETAIL_ROUTE = DETAIL_ROUTE;
 
-  selectPie(id: string){
-    this.pieService.setSelectedPie(id);
-  }
   categoryEffect = effect(() => {
     this.pieService.setSelectedCategory(this.categoryId());
   })
