@@ -8,6 +8,7 @@ import { CartComponent } from './cart/cart.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WrapperComponent } from './products/wrapper.component';
+import { CartModalComponent } from './cart/cart-modal/cart-modal.component';
 
 export const HOME_ROUTE = 'home';
 export const PRODUCTS_ROUTE = 'products';
@@ -51,7 +52,8 @@ export const routes: Routes = [
   },
   {
     path: CART_ROUTE,
-    component: CartComponent,
+    component: CartModalComponent,
+    outlet: "cartModal",
   },
   {
     path: ABOUT_ROUTE,
