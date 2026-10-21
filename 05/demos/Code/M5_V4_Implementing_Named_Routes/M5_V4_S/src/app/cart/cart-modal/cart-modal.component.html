@@ -1,4 +1,8 @@
 <div class="cart-wrapper">
-  <button mat-button (click)="close()">close</button>
+  <a
+    mat-button
+    [routerLink]="['/', {outlets: {cartModal: null}}]"
+    queryParamsHandling="merge"
+  >close</a>
   <app-cart-form/>
 </div>
