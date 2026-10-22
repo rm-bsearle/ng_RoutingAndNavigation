@@ -29,37 +29,28 @@ export const routes: Routes = [
   },
   {
     path: `${PRODUCTS_ROUTE}/:categoryId`,
-    component: WrapperComponent,
-    children: [
-      {
-        path: '',
-        component: AllProductsComponent,
-      },
-      {
-        path: DETAIL_ROUTE,
-        component: ProductDetailComponent,
-      },
-    ]
+    loadComponent: () => import('./products/wrapper.component').then(m => m.WrapperComponent),
+    loadChildren: () => import('./products/products.routes').then(m => m.PRODUCTS_ROUTES),
   },
   {
     path: LOGIN_ROUTE,
-    component: LoginComponent,
+    loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
   },
   {
     path: CONTACT_ROUTE,
-    component: ContactComponent,
+    loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent),
   },
   {
     path: CART_ROUTE,
-    component: CartModalComponent,
+    loadComponent: () => import('./cart/cart-modal/cart-modal.component').then(m => m.CartModalComponent),
     outlet: 'cartModal',
   },
   {
     path: ABOUT_ROUTE,
-    component: AboutComponent,
+    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent),
   },
   {
     path: '**',
-    component: NotFoundComponent,
+    loadComponent: () => import('./not-found/not-found.component').then(m => m.NotFoundComponent),
   },
 ];
