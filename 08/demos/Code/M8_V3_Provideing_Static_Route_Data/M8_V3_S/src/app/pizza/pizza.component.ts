@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-pizza',
-  imports: [BreadcrumbsComponent, RouterOutlet],
+  imports: [RouterOutlet],
   templateUrl: './pizza.component.html',
   styleUrl: './pizza.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
