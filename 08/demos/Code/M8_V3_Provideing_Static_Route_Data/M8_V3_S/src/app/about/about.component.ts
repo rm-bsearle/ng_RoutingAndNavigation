@@ -7,7 +7,7 @@ import { MESSAGE_SERVICE } from '../services/message.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BreadcrumbsComponent],
+  imports: [],
 })
 export class AboutComponent {
   readonly messageService = inject(MESSAGE_SERVICE, {optional: true});

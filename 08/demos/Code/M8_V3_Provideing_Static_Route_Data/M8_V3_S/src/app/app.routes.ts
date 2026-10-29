@@ -5,6 +5,7 @@ import { isPizzaEnabledCanActivateGuard } from './is-pizza-enabled-can-activate.
 import { isPizzaEnabledCanMatchGuard } from './is-pizza-enabled-can-match.guard';
 import { isUserAuthenticatedCanMatchGuard } from './is-user-authenticated-can-match.guard';
 import { leavePizzaCanDeactivateGuard } from './leave-pizza-can-deactivate.guard';
+import { AboutComponent } from './about/about.component';
 
 export const HOME_ROUTE = 'home';
 export const NEW_HOME_ROUTE = 'new-home';
@@ -77,8 +78,13 @@ export const routes: Routes = [
   },
   {
     path: ABOUT_ROUTE,
-    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent),
     title: 'Bethany\'s - About',
+    loadComponent: () => import('./shared-ui/image-wrapper/image-wrapper.component').then(m => m.ImageWrapperComponent),
+    data: {
+      imageUrl: '../../assets/images/about.png',
+      routePath: ABOUT_ROUTE,
+      component: AboutComponent,
+    },
   },
   {
     path: ADMIN_ROUTE,
